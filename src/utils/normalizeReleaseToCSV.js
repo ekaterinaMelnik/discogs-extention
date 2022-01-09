@@ -1,6 +1,6 @@
-const normalizeReleaseToCSV = (object) => {
+const normalizeReleaseToCSV = (object = test) => {
   return Object.keys(object).reduce((csv, key) => {
-    return csv + `${key}=${object[key]},`;
+    return csv + `${key}=${object[key]}` + '\t';
   }, '');
 }
 
