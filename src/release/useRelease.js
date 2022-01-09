@@ -6,7 +6,7 @@ const ENDPOINT = 'https://api.discogs.com';
 const getLabel = (release) => {
   const firstLabel = release.labels[0];
 
-  if (firstLabel) {
+  if (!firstLabel) {
     return null;
   }
 
