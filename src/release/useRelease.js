@@ -4,13 +4,12 @@ import LOADING_STATE from "../constants/loadingState";
 const ENDPOINT = 'https://api.discogs.com';
 
 const deserializeResponse = (response) => ({
-  year: response.year,
+  year: `ⓟ${response.year}`,
   uri: response.uri,
   country: response.country,
   title: response.title,
-  artists: response.artists.map((artist) => artist.name).join(', '),
-  // TODO: check
-  labels: response.labels.map((label) => label.name).join(', ')
+  artists: response.artists.map((artist) => artist.name?.toUpperCase())?.join(', '),
+  labels: response.labels[0]?.name,
 });
 
 const fetchRelease = (id) =>
