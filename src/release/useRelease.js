@@ -3,13 +3,22 @@ import LOADING_STATE from "../constants/loadingState";
 
 const ENDPOINT = 'https://api.discogs.com';
 
+const getLabel = (release) => {
+  const firstLabel = release.labels[0];
+
+  if (firstLabel) {
+    return null;
+  }
+
+  return `${firstLabel.name} ${firstLabel.catno}`;
+}
 const deserializeResponse = (response) => ({
-  year: `ⓟ${response.year}`,
+  year: `℗${response.year}`,
   uri: response.uri,
   country: response.country,
-  title: response.title,
+  title: `«${response.title}»`,
   artists: response.artists.map((artist) => artist.name?.toUpperCase())?.join(', '),
-  labels: response.labels[0]?.name,
+  label: getLabel(response),
 });
 
 const fetchRelease = (id) =>
