@@ -8,7 +8,7 @@ import normalizeReleaseToCSV from "./utils/normalizeReleaseToCSV";
 import parseIdFromUrl from "./utils/parseIdFromUrl";
 
 function App() {
-  const [release, { request }] = useRelease();
+  const [release, loading, { request }] = useRelease();
 
   const handleClick = useCallback(() => {
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="app">
-      <Vinyl onClick={handleClick} />
+      <Vinyl loading={loading} onClick={handleClick} />
     </div>
   );
 }
