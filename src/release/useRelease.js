@@ -10,8 +10,13 @@ const getLabel = (release) => {
     return null;
   }
 
+  if (!firstLabel.catno) {
+    return firstLabel.name;
+  }
+
   return `${firstLabel.name} ${firstLabel.catno}`;
 }
+
 const deserializeResponse = (response) => ({
   year: `℗${response.year}`,
   uri: response.uri,
