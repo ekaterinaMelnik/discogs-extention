@@ -31,6 +31,7 @@ const deserializeResponse = (response) => ({
   title: `«${response.title}»`,
   artists: response.artists.map((artist) => artist.name?.toUpperCase())?.join(', '),
   label: formatLabel(response.labels[0]),
+  '•': '•'
 });
 
 const fetchRelease = (id) =>
