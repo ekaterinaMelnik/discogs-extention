@@ -11,3 +11,77 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.vinyl {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vinyl::before {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  clip-path: polygon(0% 0%, 0% 50%, 50% 50%, 100% 100%, 100% 50%, 50% 50%);
+  opacity: 0.2;
+  position: absolute;
+}
+
+.vinyl::after {
+  content: "";
+  display: block;
+  width: 5%;
+  height: 5%;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 35px solid red;
+}
+
+.vinyl-text {
+  z-index: 1;
+  position: absolute;
+  margin-top: -40px;
+}
+
+.vinyl-rotate-start {
+  animation: ease-in 1s rotate;
+}
+
+.vinyl-rotate-continue {
+  animation: linear 0.5s rotate infinite;
+}
+
+.vinyl-rotate-end {
+  animation: ease-out 2s rotate-end;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-end {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

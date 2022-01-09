@@ -1,10 +1,11 @@
 /* global chrome */
 import React, { useCallback, useEffect } from 'react';
+import './App.css';
+import { Vinyl } from './components/Vinyl';
 import useRelease from "./release/useRelease";
 import copyToClipboard from "./utils/copyToClipboard";
-import parseIdFromUrl from "./utils/parseIdFromUrl";
 import normalizeReleaseToCSV from "./utils/normalizeReleaseToCSV";
-import './App.css';
+import parseIdFromUrl from "./utils/parseIdFromUrl";
 
 function App() {
   const [release, { request }] = useRelease();
@@ -25,9 +26,7 @@ function App() {
 
   return (
     <div className="app">
-      <button className="vinyl" onClick={handleClick}>
-        COPY
-      </button>
+      <Vinyl onClick={handleClick} />
     </div>
   );
 }
